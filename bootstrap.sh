@@ -21,7 +21,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 fi;
 
 # Brew install
-brew update
-brew cask
-brew tap Homebrew/bundle
-brew bundle
+./homebrew.sh
