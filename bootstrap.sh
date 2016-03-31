@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 cd "$(dirname "${BASH_SOURCE}")";
 
 # Make sure we are up to date
@@ -9,7 +7,7 @@ git pull origin master;
 
 # Symlink dotfiles
 for i in .*; do
-  if [ "$i" != ".git" ]; then
+  if [ "$i" != ".git" && "$i" != "." && "$i" != ".." ]; then
     ln -s $PWD/$i ~/$i
   fi
 done
