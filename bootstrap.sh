@@ -6,10 +6,9 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 # Symlink dotfiles
+GLOBIGNORE=.:..:.git
 for i in .*; do
-  if [ "$i" != ".git" && "$i" != "." && "$i" != ".." ]; then
-    ln -s $PWD/$i ~/$i
-  fi
+  ln -s $PWD/$i ~/$i
 done
 ln -s bin ~/bin
 
