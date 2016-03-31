@@ -2,21 +2,22 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
+# Make sure we are up to date
 git pull origin master;
 
-function doIt() {
-	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
-	source ~/.bash_profile;
-}
+# Symlink dotfiles
+for i in .*; do
+  ln -s $i ~/$i
+done
+ln -s bin ~/bin
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-	fi;
+# Brew install
+brew tap Homebrew/bundle
+brew bundle
+
+# Initial OS X setup
+read -p "Is this a fresh Mac install? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	bash init/.osx
 fi;
-unset doIt;

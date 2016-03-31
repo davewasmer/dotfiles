@@ -10,18 +10,14 @@ install homebrew/dupes/grep
 install homebrew/dupes/openssh
 install homebrew/dupes/screen
 
-# Install other useful binaries.
 install silver-searcher
 install git
 install hub
 install tree
 install watchman
+install neovim
 
-# Programming
 cask install iterm2
-install neovim/neovim/neovim
-
-# General
 cask install dropbox
 cask install chrome
 cask install things

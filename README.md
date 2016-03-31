@@ -1,22 +1,18 @@
-## Using Git and the bootstrap script
+# Setup
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+Clone the repo down and run the `bootstrap.sh` script. The script should be
+idempotent, so re-run it anytime you'd like to sync the latest changes.
 
-```bash
-git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles && source bootstrap.sh
-```
+# Features
 
-To update, `cd` into your local `dotfiles` repository and then:
+## `~/bin`
 
-```bash
-source bootstrap.sh
-```
+Automatically added to $PATH
 
-Alternatively, to update while avoiding the confirmation prompt:
+## `~/.iterm2`
 
-```bash
-set -- -f; source bootstrap.sh
-```
+An iTerm2 configuration profile you can use in conjuction with the "load from
+file option" found in the iTerm2 preferences
 
 ## Specify the `$PATH`
 
