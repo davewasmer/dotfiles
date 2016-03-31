@@ -1,7 +1,3 @@
-update
-upgrade --all
-
-cask
 tap homebrew/versions
 
 # Install more recent versions of some OS X tools.
