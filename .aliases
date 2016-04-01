@@ -64,3 +64,33 @@ alias egc="ember generate component -no-path"
 
 # Docker shortcut
 alias dkc="docker-compose"
+
+## Git
+
+# Pretty log output
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
+# Add all new files, then interactively add changed files
+alias gap="git add -N . && git add -p"
+
+# Pull using rebase instead of merging
+alias glr="git pull --rebase"
+
+# Make a quick WIP commit
+alias gwip="ga . && gca -m 'WIP'"
+
+# Commit all changes
+alias gca="!git add -A && git commit -av"
+
+# Switch to a branch, creating it if necessary
+alias go="git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\";"
+
+# Amend the currently staged files to the latest commit
+alias gamend="commit --amend --reuse-message=HEAD"
+
+# Interactive rebase with the given number of latest commits
+alias greb="!r() { git rebase -i HEAD~$1; }; r"
+
+# Remove branches that have already been merged with master
+# a.k.a. ‘delete merged’
+alias gdm="!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"

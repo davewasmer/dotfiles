@@ -117,25 +117,3 @@ function unwatch-project {
   watchman -- trigger-del $(pwd) $pkg_name-docs
   echo "Deleted watcher for $(pwd). Automatic background builds removed."
 }
-
-# Open an iterm shell with the supplied arguments entered as a command
-function iterm {
-	read -r -d '' script <<'EOF'
-	on run argv
-	tell application "iTerm"
-	    activate
-	    set myterm to (create window with default profile)
-	    tell myterm
-	        tell current session
-	            repeat with arg in argv
-	               write text arg newline NO
-	               write text " " newline NO
-	            end repeat
-	            write text ""
-	        end tell
-	    end tell
-	end tell
-	end run
-	EOF
-	echo "$script" | osascript ``-'' $@
-}

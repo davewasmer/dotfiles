@@ -8,9 +8,9 @@ git pull origin master;
 # Symlink dotfiles
 GLOBIGNORE=.:..:.git
 for i in .*; do
-  ln -s $PWD/$i ~/$i
+  ln -s $PWD/$i $HOME/$i
 done
-ln -s bin ~/bin
+ln -s $PWD/bin $HOME/bin
 
 # Initial OS X setup
 read -p "Is this a fresh Mac install? (y/n) " -n 1;

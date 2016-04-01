@@ -9,12 +9,14 @@ brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 
-brew install the_silver_searcher
+brew install curl
 brew install git
+brew install heroku-toolbelt
 brew install hub
+brew install neovim
+brew install the_silver_searcher
 brew install tree
 brew install watchman
-brew install neovim
 brew install z
 
 brew cask install iterm2
