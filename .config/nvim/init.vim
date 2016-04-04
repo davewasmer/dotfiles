@@ -150,10 +150,17 @@ call plug#end()
 " NerdTree
 """""""""""""""""""""""""""""""""""
 
-autocmd vimenter * NERDTree    " open NerdTree automatically on startup
-map <C-n> :NERDTreeToggle<CR>  " open NerdTree on Ctrl-N
+" Open NERDTree on startup, unless a file was specified
+:function Open_nerdtree_on_startup()
+  NERDTree
+	wincmd p
+endfunction
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :call Open_nerdtree_on_startup() | endif
+" open NerdTree on Ctrl-N
+map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1       " show hidden files by default
-let NERDTreeIgnore = ['\.DS_Store'] " ignore DS_Store files in NerdTree
+let NERDTreeIgnore = ['\.DS_Store', '.git'] " ignore DS_Store files in NerdTree
 
 """""""""""""""""""""""""""""""""""
 " CtrlP
@@ -168,7 +175,9 @@ let g:ctrlp_show_hidden = 1
 
 let g:session_directory = "~/.config/nvim/sessions"
 let g:session_default_name = ".vimsession"
-let g:session_autoload = 'yes'
+" If a file was specified, don't load the session from this directory (since
+" we just want to quick edit that file). Otherwise, autoload sessions
+let g:session_autoload = argc() == 0 && !exists("s:std_in") ? 'no' : 'yes'
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 5
 let g:session_autosave_silent = 1
