@@ -44,3 +44,6 @@ if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_c
 elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
+
+export NVM_DIR="/Users/daw/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

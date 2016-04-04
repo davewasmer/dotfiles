@@ -94,3 +94,8 @@ alias greb="!r() { git rebase -i HEAD~$1; }; r"
 # Remove branches that have already been merged with master
 # a.k.a. ‘delete merged’
 alias gdm="!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+## Docker
+
+alias dc="docker-compose"
+

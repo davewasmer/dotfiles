@@ -14,6 +14,8 @@ brew install git
 brew install heroku-toolbelt
 brew install hub
 brew install neovim
+brew install python
+brew install python3
 brew install the_silver_searcher
 brew install tree
 brew install watchman
@@ -31,6 +33,12 @@ brew cask install slack
 brew cask install sketch
 brew cask install dash
 brew cask install evernote
+brew cask install arq
+brew cask install flowdock
+brew cask install spotify
+
+# Install python neovim package
+pip2 install neovim
 
 # Remove outdated versions from the cellar.
 brew cleanup
