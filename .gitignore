@@ -12,3 +12,4 @@ Thumbs.db
 # My "LEFTOFF" file convention
 LEFTOFF
 .config/nvim/sessions
+.config/hub
