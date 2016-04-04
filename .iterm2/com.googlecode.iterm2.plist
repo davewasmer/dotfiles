@@ -1488,7 +1488,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>307</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -1502,13 +1502,21 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>427 412 224 325 0 0 1680 1027 </string>
 	<key>NSWindow Frame NSColorPanel.modal</key>
-	<string>728 561 224 309 0 0 1680 1027 </string>
+	<string>728 585 224 277 0 0 1680 1027 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 112 445 318 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 197 606 456 0 0 1680 1027 </string>
+	<string>269 226 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>558 181 986 792 0 0 1680 1027 </string>
+	<string>3 9 834 1013 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>9 457 970 537 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>233 78 970 537 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>254 55 970 537 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>61 53 1610 945 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_518D2037-FDD8-4E32-9819-B01FC5084845</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_C7B1AF7D-969C-4D10-8568-FEC7190ED1F3</key>
@@ -2250,6 +2258,10 @@
 			<string>/Users/daw</string>
 		</dict>
 	</array>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2310,7 +2322,7 @@
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
-	<true/>
+	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
 	<key>RightCommand</key>
@@ -2326,7 +2338,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-03-31T20:54:11Z</date>
+	<date>2016-04-03T18:43:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
