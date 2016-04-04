@@ -80,7 +80,7 @@ alias glr="git pull --rebase"
 alias gwip="ga . && gca -m 'WIP'"
 
 # Commit all changes
-alias gca="!git add -A && git commit -av"
+alias gca="git add -A && git commit -av"
 
 # Switch to a branch, creating it if necessary
 alias go="git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\";"
@@ -93,7 +93,7 @@ alias greb="!r() { git rebase -i HEAD~$1; }; r"
 
 # Remove branches that have already been merged with master
 # a.k.a. ‘delete merged’
-alias gdm="!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+alias gdm="git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 ## Docker
 
