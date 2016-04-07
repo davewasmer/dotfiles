@@ -10,6 +10,7 @@ brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
 
 brew install curl
+brew install editorconfig
 brew install git
 brew install heroku-toolbelt
 brew install hub

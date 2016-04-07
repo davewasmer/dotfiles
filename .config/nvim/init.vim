@@ -143,6 +143,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'bling/vim-bufferline'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
@@ -237,6 +238,13 @@ let g:airline#extensions#default#layout = [
 " ERB style surround tags (<% %>)
 let g:surround_{char2nr('=')} = "<%= \r %>"
 let g:surround_{char2nr('-')} = "<% \r %>"
+
+"""""""""""""""""""""""""""""""""""
+" Editor Config
+"""""""""""""""""""""""""""""""""""
+
+let g:EditorConfig_exec_path = 'usr/local/bin/editorconfig'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 """""""""""""""""""""""""""""""""""
 " Functions
