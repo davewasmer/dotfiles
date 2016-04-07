@@ -1,0 +1,16 @@
+{
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+  ],
+  "dontLoad": [
+    "tmp/**/*"
+  ],
+  "plugins": {
+    "doc_comment": {
+      "strong": true
+    },
+    "node": {}
+  }
+}
