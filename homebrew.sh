@@ -28,7 +28,6 @@ brew cask install google-chrome
 brew cask install things
 brew cask install dockertoolbox
 brew cask install spectacle
-brew cask install fantastical
 brew cask install recordit
 brew cask install slack
 brew cask install sketch
