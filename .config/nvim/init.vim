@@ -139,13 +139,23 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
-Plug 'Shougo/deoplete.nvim'
 Plug 'bling/vim-bufferline'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Valloric/YouCompleteMe'
+" Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""
+" Ultisnips
+"""""""""""""""""""""""""""""""""""
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/snippets']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 """""""""""""""""""""""""""""""""""
 " NerdTree
@@ -188,25 +198,8 @@ let g:session_autosave_silent = 1
 """""""""""""""""""""""""""""""""""
 
 let g:user_emmet_expandabbr_key='<Tab>'
-
-"""""""""""""""""""""""""""""""""""
-" Deoplete (autocompletion)
-"""""""""""""""""""""""""""""""""""
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_camel_case = 1
-
-" Candidate selection keys
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"     return (pumvisible() ? '\<C-y>' : '' ) . '\<CR>'
-" endfunction
-" function! s:my_cr_function() abort
-"   return deoplete#mappings#close_popup() . '\<CR>'
-" endfunction
-" inoremap <expr><TAB>  pumvisible() ? '\<C-n>' : '\<TAB>'
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr> <CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 """""""""""""""""""""""""""""""""""
 " Airline
