@@ -13,3 +13,4 @@ Thumbs.db
 LEFTOFF
 .config/nvim/sessions
 .config/hub
+.config/nvim/swaps/*
