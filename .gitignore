@@ -15,3 +15,4 @@ LEFTOFF
 .config/hub
 .config/nvim/swaps/*
 .config/nvim/.netrwhist
+.config/configstore/update-notifier-bower.json
