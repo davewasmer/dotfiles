@@ -17,7 +17,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set tabstop=2           " number of visual spaces each TAB counts for
 "set softtabstop=2       " number of spaces each TAB counts for when editing
-"set expandtab           " tabs are spaces
+set expandtab           " tabs are spaces
 set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""
