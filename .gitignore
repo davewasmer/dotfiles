@@ -14,3 +14,4 @@ LEFTOFF
 .config/nvim/sessions
 .config/hub
 .config/nvim/swaps/*
+.config/nvim/.netrwhist
