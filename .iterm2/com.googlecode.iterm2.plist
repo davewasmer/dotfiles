@@ -1325,6 +1325,13 @@
 			<key>Text</key>
 			<string>[104;5u</string>
 		</dict>
+		<key>0x72-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Text</key>
+			<string>0x03 0x10 0x0D</string>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1488,7 +1495,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>307</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -1500,23 +1507,35 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>427 412 224 325 0 0 1680 1027 </string>
+	<string>685 624 224 325 0 0 2560 1417 </string>
 	<key>NSWindow Frame NSColorPanel.modal</key>
-	<string>728 585 224 277 0 0 1680 1027 </string>
+	<string>1168 890 224 261 0 0 2560 1417 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 112 445 318 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 226 606 456 0 0 1680 1027 </string>
+	<string>585 633 606 456 0 0 2560 1417 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>1080 966 400 129 0 0 2560 1417 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>970 787 620 392 0 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>3 9 834 1013 0 0 1680 1027 </string>
+	<string>283 485 970 537 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>9 457 970 537 0 0 1680 1027 </string>
+	<string>3 880 970 537 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>233 78 970 537 0 0 1680 1027 </string>
+	<string>3 399 1274 1013 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>254 55 970 537 0 0 1680 1027 </string>
+	<string>3 404 1274 1013 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>61 53 1610 945 0 0 1680 1027 </string>
+	<string>1 435 970 537 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>427 89 970 537 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>448 66 970 537 0 0 1920 1057 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>3 404 1274 1013 0 0 2560 1417 </string>
+	<key>NSWindow Frame iTerm Window 8</key>
+	<string>406 14 1274 1013 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_518D2037-FDD8-4E32-9819-B01FC5084845</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_C7B1AF7D-969C-4D10-8568-FEC7190ED1F3</key>
@@ -1741,7 +1760,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -2121,9 +2140,9 @@
 				<key>action</key>
 				<string>command</string>
 				<key>editor</key>
-				<string>com.sublimetext.2</string>
+				<string>com.sublimetext.3</string>
 				<key>text</key>
-				<string>dirname \1 | xargs open</string>
+				<string>nvim \1</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2258,16 +2277,24 @@
 			<string>/Users/daw</string>
 		</dict>
 	</array>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
 	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
 	<integer>0</integer>
+	<key>NoSyncInstallationId</key>
+	<string>32F4ABCB-1ABC-454C-8E20-C95A1585CAB5</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
+	<key>NoSyncSuppressAnnyoingBellOffer</key>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>480983538.07258397</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -2319,6 +2346,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/daw/projects/dotfiles/.iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -2334,11 +2363,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=50</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-03T18:43:26Z</date>
+	<date>2016-05-13T00:00:08Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2396,6 +2425,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>2.9.20160426</string>
 </dict>
 </plist>

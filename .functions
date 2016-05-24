@@ -117,3 +117,32 @@ function unwatch-project {
   watchman -- trigger-del $(pwd) $pkg_name-docs
   echo "Deleted watcher for $(pwd). Automatic background builds removed."
 }
+
+# Start a Docker Compose service in detached mode, but immediately tail the logs
+# This lets you start the container and watch the startup logs, but quitting
+# the log tail won't stop the container.
+function dup {
+  local current_dir=$(basename $PWD)
+  local service_name=${1:-$current_dir}
+  docker-compose up -d $service_name
+  docker-compose logs -tf --tail 200 $service_name
+}
+
+function dcr {
+  local service_name=$(basename $PWD)
+  docker-compose run --rm $service_name "$@"
+}
+
+# Cleanup Docker disk space
+function docker-clean-disk {
+  docker ps -qa | xargs docker stop
+  docker ps -qa | xargs docker rm
+  docker images -q --filter "dangling=true" | xargs -n 100 docker rmi
+}
+
+# Clear the logs for a given container
+function docker-clear-logs {
+  local log_path=$(docker inspect $1 | grep -G '"LogPath": "*"' | sed -e 's/.*"LogPath": "//g' | sed -e 's/",//g');
+  docker-machine ssh default sudo rm $log_path
+}
+

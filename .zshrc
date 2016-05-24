@@ -6,6 +6,7 @@ export ZSH=/Users/daw/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
+RPROMPT='[%D{%T %m/%d}]'
 
 # Hide the user@host part of the prompt if it's just me on local
 DEFAULT_USER=daw
@@ -24,9 +25,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 
 source $ZSH/oh-my-zsh.sh
 
-source `brew --prefix`/etc/profile.d/z.sh
-
-for file in ~/.{path,exports,aliases,functions,extra}; do
+for file in ~/.{path,exports,aliases,functions,plugins,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -45,5 +44,12 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
 
-export NVM_DIR="/Users/daw/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Automatically switch to the project's node version when entering the dir
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

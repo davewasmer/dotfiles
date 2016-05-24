@@ -1,3 +1,67 @@
-snippet letter
-foo
+priority 1000
+
+snippet fn "function() {}" w
+function$0($1) {$2
 endsnippet
+
+snippet ex "export default" b
+export default $0
+endsnippet
+
+snippet im "import" b
+import $1 from '$1';
+endsnippet
+
+snippet im_ "import lodash" b
+import $1 from 'lodash/$1';
+endsnippet
+
+snippet ime "import Ember" b
+import Ember from 'ember';
+endsnippet
+
+snippet imed "import Ember Data" b
+import DS from 'ember-data';
+endsnippet
+
+snippet ccm "const computed" b
+const computed = Ember.computed;
+endsnippet
+
+snippet cc{ "const { computed }" b
+const { ${1:alias} } = Ember.computed;
+endsnippet
+
+snippet cinj "const { inject }" b
+const { service } = Ember.inject;
+endsnippet
+
+snippet cas "const assert" b
+const assert = Ember.assert;
+endsnippet
+
+snippet cget "const get" b
+const get = Ember.get;
+endsnippet
+
+snippet set "const set" b
+const set = Ember.set;
+endsnippet
+
+snippet catr "const attr" b
+const attr = DS.attr;
+endsnippet
+
+snippet chas "const hasMany" b
+const hasMany = DS.hasMany;
+endsnippet
+
+snippet cbelong "const belongsTo" b
+const attr = DS.attr;
+endsnippet
+
+snippet imd "import Denali" b
+import { $1 } from 'denali';
+endsnippet
+
+

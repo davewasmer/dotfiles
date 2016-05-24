@@ -62,9 +62,6 @@ alias nombom="trash node_modules && trash bower_components && npm install && bow
 # Generate an Ember component without the parent "component/" directory
 alias egc="ember generate component -no-path"
 
-# Docker shortcut
-alias dkc="docker-compose"
-
 ## Git
 
 # Pretty log output
@@ -99,3 +96,6 @@ alias gdm="git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 alias dc="docker-compose"
 
+## Editing
+
+alias n="nvim"

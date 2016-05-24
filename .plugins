@@ -1,0 +1,10 @@
+# z directory jumper
+source `brew --prefix`/etc/profile.d/z.sh
+
+# node version manager (nvm)
+export NVM_DIR="/Users/daw/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# ruby version manager (rvm)
+export PATH="$PATH:$HOME/.rvm/bin"
+
