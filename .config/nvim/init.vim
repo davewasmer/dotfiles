@@ -10,7 +10,7 @@ set ttyfast             " Assume a fast terminal connection
 set encoding=utf-8 nobomb " Use UTF-8 without BOM
 set hidden              " Allow hidden buffers
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set wildignore+=*/node_modules/*,*/tmp/*
+set wildignore+=*/node_modules/*,*/tmp/*,*/dist/*
 
 """""""""""""""""""""""""""""""""""
 " Tabs & Spaces
@@ -28,6 +28,7 @@ set shiftwidth=2
 set number              " show line numbers
 set showcmd             " show last entered command in bottom bar (or in powerline)
 set cursorline          " highlight current line
+" hi StatusLine ctermfg=231 ctermbg=59 cterm=bold guifg=#4A5052 guibg=#1A2024 gui=bold
 set showmatch           " highlight matching [{()}]
 set ruler               " Show the cursor position
 set showmode            " Show the current mode
@@ -36,6 +37,11 @@ set colorcolumn=80      " Show line length guide at 80
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
+
+" Wrap markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile,BufEnter *.md colorscheme summerfruit
+au BufLeave *.md colorscheme codeschool
 
 """""""""""""""""""""""""""""""""""
 " Other GUI options
@@ -111,10 +117,10 @@ inoremap [<cr> [<cr>]<c-o>O
 inoremap (<cr> (<cr>)<c-o>O
 
 " Join lines without spaces by default
-nnoremap J Jdiw
+" nnoremap J Jdiw
 
 " Add newlines from normal mode
-"nnoremap <C-M> i<CR><Esc>
+nnoremap <C-M> i<CR><Esc>
 
 """""""""""""""""""""""""""""""""""
 " Custom mappings
@@ -141,6 +147,16 @@ nnoremap <leader>g :lnext<CR>
 set clipboard=unnamed   " Use the OS clipboard by default
 
 """""""""""""""""""""""""""""""""""
+" Poor man's syntastic
+" https://www.reddit.com/r/vim/comments/2v7f8f/when_does_vim_become_bloated/cof4ln7
+"""""""""""""""""""""""""""""""""""
+
+" setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+" setlocal makeprg=eslint
+" command! -buffer Make silent make % | silent redraw! | silent wincmd p
+" autocmd! BufWritePost *.js Make
+
+"""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""
 
@@ -148,14 +164,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'                 " Use relative line numbers intelligently
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'      " Snippets
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }  " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
@@ -167,23 +180,40 @@ Plug 'moll/vim-bbye'
 Plug 'sheerun/vim-polyglot'
 Plug 'othree/es.next.syntax.vim'
 Plug 'tomtom/tcomment_vim'
-"Plug 'scrooloose/nerdcommenter'
-"Plug 'tpope/vim-fugitive'
-"Plug 'fholgado/minibufexpl.vim'
-"Plug 'alvan/vim-closetag'
-"Plug 'mustache/vim-mustache-handlebars'
-"Plug 'xolox/vim-session'
-"Plug 'xolox/vim-misc'
-"Plug 'bling/vim-bufferline'
-"Plug 'KabbAmine/vCoolor.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'terryma/vim-expand-region'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'flazz/vim-colorschemes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'fholgado/minibufexpl.vim'
+" Plug 'alvan/vim-closetag'
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'xolox/vim-session'
+" Plug 'xolox/vim-misc'
+" Plug 'bling/vim-bufferline'
+" Plug 'KabbAmine/vCoolor.vim'
 
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""
+" bufexplorer
+"""""""""""""""""""""""""""""""""""
+
+nnoremap z :BufExplorer<CR>
 
 """""""""""""""""""""""""""""""""""
 " polyglot
 """""""""""""""""""""""""""""""""""
 
 let g:polyglot_disabled = ['js']
+let g:markdown_fenced_languages = [ 'html', 'javascript', 'bash=sh' ]
+let g:markdown_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""
 " minibufexpl
@@ -217,41 +247,35 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " NerdTree
 """""""""""""""""""""""""""""""""""
 
-" Open NERDTree on startup, unless a file was specified
-:function Open_nerdtree_on_startup()
-  NERDTree
-  wincmd p
-endfunction
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && (!exists("s:std_in") || argv(0) == '.') | :call Open_nerdtree_on_startup() | endif
-" open NerdTree on ,t
-nnoremap <leader>t :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1       " show hidden files by default
 let NERDTreeIgnore = ['\.DS_Store', '.git'] " ignore DS_Store files in NerdTree
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeMinimalUI = 1
+let NERDTreeAutoDeleteBuffer=1
+nnoremap - :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""
 " NerdCommenter
 """""""""""""""""""""""""""""""""""
 
 " Use // for SASS comments by default
-let NERD_scss_alt_style=1
-
+" let NERD_scss_alt_style=1
+"
 """""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_loc_list_height = 3
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_loc_list_height = 3
 let g:syntastic_javascript_checkers = ["eslint"]
 let g:syntastic_javascript_eslint_exec = "/Users/daw/.nvm/versions/node/v5.10.0/bin/eslint"
 let g:syntastic_scss_scss_lint_exec='/Users/daw/.rvm/gems/ruby-2.3.0/bin/scss-lint'
-let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
+" let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 """""""""""""""""""""""""""""""""""
 " Closetag
@@ -263,10 +287,11 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 " CtrlP
 """""""""""""""""""""""""""""""""""
 
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_brief_prompt = 1
 let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_custom_ignore = 'bower_components,node_modules'
 
 """""""""""""""""""""""""""""""""""
 " Vim Session
@@ -291,24 +316,24 @@ let g:user_emmet_expandabbr_key = '<C-e>'
 " Airline
 """""""""""""""""""""""""""""""""""
 
-let g:airline_theme = 'luna'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#bufferline#overwrite_variables = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#csv#enabled = 0
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 0
-let g:airline#extensions#eclim#enabled = 0
-let g:airline#extensions#wordcount#enabled = 0
-
-let g:airline#extensions#default#layout = [
-   \ [ 'a', 'b', 'c' ],
-   \ [ 'x', 'error', 'warning' ]
-   \ ]
+" let g:airline_theme = 'luna'
+" let g:airline#extensions#tabline#enabled = 0
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#bufferline#enabled = 1
+" let g:airline#extensions#bufferline#overwrite_variables = 1
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#csv#enabled = 0
+" let g:airline#extensions#hunks#enabled = 1
+" let g:airline#extensions#virtualenv#enabled = 0
+" let g:airline#extensions#eclim#enabled = 0
+" let g:airline#extensions#wordcount#enabled = 0
+"
+" let g:airline#extensions#default#layout = [
+"    \ [ 'a', 'b', 'c' ],
+"    \ [ 'x', 'error', 'warning' ]
+"    \ ]
 
 """""""""""""""""""""""""""""""""""
 " Surround

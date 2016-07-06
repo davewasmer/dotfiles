@@ -12,9 +12,13 @@ Thumbs.db
 # My "LEFTOFF" file convention
 LEFT-OFF.md
 
+# My ".vimsession" convention
+.vimsession
+
 .config/nvim/sessions
 .config/hub
 .config/nvim/swaps/*
 .config/nvim/.netrwhist
 .config/configstore/update-notifier-bower.json
 .npmrcs
+npm-debug.log

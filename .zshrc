@@ -7,6 +7,8 @@ export ZSH=/Users/daw/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 RPROMPT='[%D{%T %m/%d}]'
+# Disable the prompt asking to update (just update without asking)
+DISABLE_UPDATE_PROMPT=true
 
 # Hide the user@host part of the prompt if it's just me on local
 DEFAULT_USER=daw
@@ -21,7 +23,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git docker git-extras)
 
 # Base PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$HOME/projects/dotfiles/.scripts"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,12 +46,3 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
 
-# Automatically switch to the project's node version when entering the dir
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc

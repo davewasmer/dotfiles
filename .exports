@@ -11,8 +11,5 @@ export LESS_TERMCAP_md="${yellow}";
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-# Export docker-machine connectiond details
-# eval $(docker-machine env)
-
 # Export the npm token so docker-compose can inject into containers
 export NPM_TOKEN=78d2d0f5-69d8-4d18-9148-792fdef0c903
